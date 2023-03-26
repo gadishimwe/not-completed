@@ -1,0 +1,15 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "product": "Amber member",
+      "price": 9.0
+    },
+    {
+      "id": 2,
+      "username": "Ruby member",
+      "price": 70,
+      "discount_price": 17
+    }
+  ]
+}
