@@ -22,23 +22,31 @@ class _PricingState extends State<Pricing> {
   @override
   Widget build(BuildContext context) {
     final products = Provider.of<Products>(context).products;
+    final isLoading = Provider.of<Products>(context).isLoading;
 
     return Scaffold(
       backgroundColor: const Color(0xffF5F5F5),
       appBar: AppBar(title: const Text('Pricing')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            return PricingCard(
-              price: products[index].price,
-              priceWithDiscount: products[index].discountPrice,
-            );
-          },
-        ),
-      ),
+      body: !isLoading
+          ? products.isNotEmpty
+              ? Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      return PricingCard(
+                        price: products[index].price,
+                        priceWithDiscount: products[index].discountPrice,
+                      );
+                    },
+                  ),
+                )
+              : const Center(
+                  child: Text(
+                  'There are no products',
+                ))
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }
