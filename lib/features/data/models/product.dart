@@ -1,12 +1,12 @@
 class Product {
-  final String id;
-  final String username;
+  final int id;
+  final String product;
   final double price;
   final double? discountPrice;
 
   Product({
     required this.id,
-    required this.username,
+    required this.product,
     required this.price,
     this.discountPrice,
   });
@@ -14,9 +14,9 @@ class Product {
   factory Product.fromJson(data) {
     return Product(
       id: data['id'],
-      username: data['username'],
+      product: data['product'],
       price: data['price'],
-      discountPrice: data['discountPrice'],
+      discountPrice: data['discount_price'],
     );
   }
 }

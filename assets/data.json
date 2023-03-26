@@ -7,7 +7,7 @@
     },
     {
       "id": 2,
-      "username": "Ruby member",
+      "product": "Ruby member",
       "price": 70,
       "discount_price": 17
     }

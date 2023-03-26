@@ -12,7 +12,31 @@ class PriceText extends StatelessWidget {
       children: [
         Column(
           children: [
-            CustomText(text: price.toString()),
+            Stack(
+              children: [
+                CustomText(
+                  text: price.toStringAsFixed(
+                      price.truncateToDouble() == price ? 0 : 1),
+                ),
+                priceWithDiscount != null
+                    ? Positioned(
+                        top: 8,
+                        child: Transform.rotate(
+                          angle: -8.39,
+                          child: Container(
+                            height: 4,
+                            width: 120,
+                            decoration: BoxDecoration(
+                              color: Color(0xffFD6161),
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          ),
+                        ),
+                      )
+                    : SizedBox()
+              ],
+            ),
+            SizedBox(height: 8),
             priceWithDiscount != null
                 ? CustomText(
                     text: priceWithDiscount.toString(),
@@ -37,7 +61,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        text: text,
+        text: '$text€',
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: Color(0xff212529),
